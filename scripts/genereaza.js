@@ -37,10 +37,11 @@ const duplicate = sluguri.filter((s, i) => sluguri.indexOf(s) !== i);
 if (duplicate.length) throw new Error(`Slug-uri duplicate: ${duplicate.join(', ')}`);
 parohii.sort((a, b) => a.localitate.localeCompare(b.localitate, 'ro'));
 
-const comune = {
-  nav: completeaza(citeste('_nav.html'), { radacina: '../' }),
-  subsol: completeaza(citeste('_subsol.html'), { radacina: '../', an: String(new Date().getFullYear()) }),
-};
+const partiCompune = (radacina) => ({
+  nav: completeaza(citeste('_nav.html'), { radacina }),
+  subsol: completeaza(citeste('_subsol.html'), { radacina, an: String(new Date().getFullYear()) }),
+});
+const comune = partiCompune('../');
 
 const pentruHarta = (p) => ({
   slug: p.slug,
@@ -136,4 +137,41 @@ parohii.forEach((p) => {
 });
 fs.writeFileSync(path.join(IESIRE, 'index.html'), paginaLista());
 console.log('  generat: parohii/index.html');
-console.log(`Gata: ${parohii.length} parohii.`);
+
+const PAGINI = [
+  {
+    fisier: 'despre.html',
+    titlu: 'Despre site',
+    descriere: 'Despre site-ul Protopopiatului Greco-Catolic Beiuș și semnificația culorilor folosite.',
+    radacina: '',
+  },
+  {
+    fisier: 'politica-de-confidentialitate.html',
+    titlu: 'Politica de confidențialitate',
+    descriere: 'Cum prelucrează Protopopiatul Greco-Catolic Beiuș datele personale trimise prin site.',
+    radacina: '',
+  },
+  {
+    fisier: '404.html',
+    titlu: 'Pagina nu a fost găsită',
+    descriere: 'Pagina căutată nu există.',
+    radacina: '/',
+    neindexata: true,
+  },
+];
+
+PAGINI.forEach((pg) => {
+  const continut = fs.readFileSync(path.join(__dirname, 'pagini', pg.fisier), 'utf8').trimEnd();
+  const html = completeaza(citeste('pagina.html'), {
+    ...partiCompune(pg.radacina),
+    radacina: pg.radacina,
+    titlu: esc(`${pg.titlu} | Protopopiatul Greco-Catolic Beiuș`),
+    descriere: esc(pg.descriere),
+    robots: pg.neindexata ? '  <meta name="robots" content="noindex">' : '',
+    continut,
+  });
+  fs.writeFileSync(path.join(RADACINA, pg.fisier), html);
+  console.log(`  generat: ${pg.fisier}`);
+});
+
+console.log(`Gata: ${parohii.length} parohii și ${PAGINI.length} pagini.`);

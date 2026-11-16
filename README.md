@@ -34,10 +34,16 @@ docs/            planul de design și notițe
 - Parohiile: se modifică `data/parohii.json`, apoi se regenerează paginile:
 
 ```
-node scripts/genereaza-parohii.js
+node scripts/genereaza.js
 ```
 
-Scriptul creează `parohii/index.html` (harta + lista) și câte o pagină `parohii/<slug>.html` pentru fiecare parohie, din șabloanele din `scripts/sabloane/`. Paginile din `parohii/` nu se editează de mână: se modifică datele sau șabloanele și se rulează din nou scriptul.
+Scriptul creează din șabloanele din `scripts/sabloane/`:
+- `parohii/index.html` (harta + lista) și câte o pagină `parohii/<slug>.html` pentru fiecare parohie;
+- `despre.html`, `politica-de-confidentialitate.html` și `404.html`, al căror conținut stă în `scripts/pagini/`.
+
+Aceste pagini nu se editează de mână: se modifică datele, șabloanele sau `scripts/pagini/` și se rulează din nou scriptul. Navbar-ul și footer-ul lor vin din `scripts/sabloane/_nav.html` și `_subsol.html`.
+
+`404.html` folosește căi absolute (`/assets/...`), ca să funcționeze la orice adresă greșită. Merge corect pe domeniul propriu (pgcbeius.ro) sau pe serverul local.
 
 ### Câmpurile unei parohii
 | Câmp | Obligatoriu | Exemplu |

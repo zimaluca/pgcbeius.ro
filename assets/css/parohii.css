@@ -1,38 +1,3 @@
-.pagina-interioara main {
-  padding-top: var(--inaltime-nav);
-}
-
-.antet-pagina {
-  padding-block: var(--s-8) var(--s-6);
-}
-.antet-pagina h1 {
-  font-size: var(--marime-h1);
-}
-.antet-pagina .intro {
-  margin-top: var(--s-2);
-}
-
-.firimituri {
-  margin-bottom: var(--s-2);
-  font-size: var(--marime-mica);
-  color: var(--text-estompat);
-}
-.firimituri a {
-  color: inherit;
-}
-.firimituri a:hover {
-  color: var(--visiniu);
-}
-
-.nota-test {
-  display: inline-block;
-  margin: var(--s-2) 0 0;
-  padding: 0.35rem 0.75rem;
-  border-left: 2px solid var(--auriu);
-  background: var(--crem-cald);
-  font-size: var(--marime-mica);
-}
-
 .parohii {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -234,9 +199,6 @@
 }
 
 @media (max-width: 640px) {
-  .antet-pagina {
-    padding-block: var(--s-6) var(--s-4);
-  }
   .parohie__harta {
     height: 260px;
   }

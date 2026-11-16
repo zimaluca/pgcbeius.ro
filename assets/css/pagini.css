@@ -1,0 +1,133 @@
+.pagina-interioara main {
+  padding-top: var(--inaltime-nav);
+}
+
+.antet-pagina {
+  padding-block: var(--s-8) var(--s-6);
+}
+.antet-pagina h1 {
+  font-size: var(--marime-h1);
+}
+.antet-pagina .intro {
+  margin-top: var(--s-2);
+}
+
+.firimituri {
+  margin-bottom: var(--s-2);
+  font-size: var(--marime-mica);
+  color: var(--text-estompat);
+}
+.firimituri a {
+  color: inherit;
+}
+.firimituri a:hover {
+  color: var(--visiniu);
+}
+
+.nota-test {
+  display: inline-block;
+  margin: var(--s-2) 0 0;
+  padding: 0.35rem 0.75rem;
+  border-left: 2px solid var(--auriu);
+  background: var(--crem-cald);
+  font-size: var(--marime-mica);
+}
+
+.articol {
+  max-width: var(--latime-text);
+  padding-bottom: var(--s-12);
+}
+.articol h2 {
+  margin: var(--s-8) 0 var(--s-2);
+}
+.articol h2:first-child {
+  margin-top: 0;
+}
+.articol h3 {
+  margin: var(--s-4) 0 var(--s-1);
+}
+.articol ul {
+  margin: 0 0 var(--s-2);
+  padding-left: 1.25rem;
+}
+.articol li + li {
+  margin-top: 0.35rem;
+}
+
+.culori-explicate {
+  display: grid;
+  gap: var(--s-4);
+  margin: var(--s-4) 0 var(--s-2);
+  padding: 0;
+  list-style: none;
+}
+.culori-explicate li {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: var(--s-3);
+  align-items: start;
+}
+.culori-explicate li + li {
+  margin-top: 0;
+}
+.culori-explicate__mostra {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 1px solid rgba(43, 35, 32, 0.2);
+}
+.culori-explicate h3 {
+  margin: 0 0 0.25rem;
+}
+.culori-explicate p {
+  margin: 0;
+}
+
+.eroare-404 {
+  display: grid;
+  justify-items: start;
+  gap: var(--s-3);
+  padding-block: var(--s-12) var(--s-16);
+}
+.eroare-404 svg {
+  width: 48px;
+  height: 64px;
+  fill: var(--auriu);
+}
+.eroare-404 h1 {
+  font-size: var(--marime-h1);
+}
+.eroare-404 p {
+  max-width: var(--latime-text);
+  margin: 0;
+  color: var(--text-estompat);
+}
+.eroare-404__linkuri {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+}
+.buton--contur {
+  border-color: var(--auriu);
+  color: var(--text);
+}
+.buton--contur:hover {
+  background: var(--crem-cald);
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .antet-pagina {
+    padding-block: var(--s-6) var(--s-4);
+  }
+}
+
+.pagina-interioara {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.pagina-interioara main {
+  flex: 1;
+}
