@@ -1,0 +1,24 @@
+# De făcut înainte de publicare
+
+## Conținut provizoriu de înlocuit
+- [ ] Programul slujbelor: orele din `index.html` sunt exemple. Se înlocuiesc cu programul real, apoi se mută în `data/program.json`.
+- [ ] Numele protopopului și al parohului.
+- [ ] Adresa, telefonul și emailul de contact.
+- [ ] Titularul contului și IBAN-ul (sau se scoate secțiunea de donații).
+- [ ] Textele dintre `[paranteze]` din `index.html`.
+- [ ] Cele 3 imagini din „Locuri din Beiuș” sunt generate cu AI (Higgsfield) și NU arată clădirile reale. Se înlocuiesc cu fotografii reale, iar eticheta „Imagine provizorie” se șterge.
+- [ ] Versetul din hero (acum: Ioan 1, 5).
+- [ ] Coordonatele bisericii în `assets/js/harta.js` (acum: centrul Beiușului).
+
+## Tehnic
+- [ ] Formularul de contact: în `action` se pune ID-ul formularului din Formspree (acum `XXXX`).
+- [ ] Fonturile: se descarcă în `assets/fonts` și se scot linkurile spre Google Fonts (GDPR + viteză).
+- [ ] Video-ul din hero: când e gata filmarea, în `<div class="hero__fundal">` se pune:
+
+```html
+<video autoplay muted loop playsinline poster="assets/img/hero-poster.jpg">
+  <source src="assets/video/hero.mp4" type="video/mp4">
+</video>
+```
+
+- [ ] Se șterge paragraful `hero__nota` („Aici va rula video-ul...”).

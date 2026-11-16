@@ -1,0 +1,52 @@
+:root {
+  --crem:            #FAF6EE;
+  --crem-cald:       #F1E8D8;
+  --auriu:           #B8913A;
+  --auriu-text:      #7E5F1C;
+  --visiniu:         #7A1E2C;
+  --visiniu-inchis:  #5E1621;
+  --text:            #2B2320;
+  --text-estompat:   rgba(43, 35, 32, 0.72);
+  --strat-video:     rgba(43, 35, 32, 0.55);
+
+  --font-titluri: "Cormorant Garamond", "Georgia", serif;
+  --font-text:    "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+
+  --marime-mica:   0.875rem;
+  --marime-text:   1.125rem;
+  --marime-h3:     1.5rem;
+  --marime-h2:     clamp(1.875rem, 1.4rem + 1.6vw, 2.25rem);
+  --marime-h1:     clamp(2.25rem, 1.6rem + 2.6vw, 3rem);
+  --marime-verset: clamp(2rem, 1.2rem + 3.4vw, 3.75rem);
+
+  --linie-text:    1.6;
+  --linie-titluri: 1.15;
+
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-6: 3rem;
+  --s-8: 4rem;
+  --s-12: 6rem;
+  --s-16: 8rem;
+
+  --latime-maxima: 72rem;
+  --latime-text:   65ch;
+  --inaltime-nav:  5rem;
+
+  --arcada: 50% 50% 0 0 / 30% 30% 0 0;
+  --colt-mic: 2px;
+  --linie-aurie: 1px solid var(--auriu);
+
+  --durata-scurta: 200ms;
+  --durata-lunga:  1200ms;
+  --curba: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --durata-scurta: 0ms;
+    --durata-lunga:  0ms;
+  }
+}
