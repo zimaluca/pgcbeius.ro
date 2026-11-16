@@ -13,7 +13,8 @@
 
 ## Tehnic
 - [ ] Formularul de contact: în `action` se pune ID-ul formularului din Formspree (acum `XXXX`).
-- [ ] Fonturile: se descarcă în `assets/fonts` și se scot linkurile spre Google Fonts (GDPR + viteză).
+- [x] Fonturile găzduite local în `assets/fonts` (Cormorant Garamond și Alegreya Sans, licență SIL Open Font License).
+- [ ] Opțional: Leaflet și Three.js se încarcă încă de pe CDN-uri externe (unpkg, jsdelivr); se pot copia și ele local.
 - [ ] Video-ul din hero: când e gata filmarea, în `<div class="hero__fundal">` se pune:
 
 ```html
