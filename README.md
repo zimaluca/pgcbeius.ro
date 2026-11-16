@@ -30,7 +30,7 @@ docs/            planul de design și notițe
 ```
 
 ## Actualizare conținut
-- Programul slujbelor: `data/program.json`
+- Programul slujbelor: `data/program.json` (pagina îl citește singură, nu trebuie rulat nimic)
 - Parohiile: se modifică `data/parohii.json`, apoi se regenerează paginile:
 
 ```
@@ -53,3 +53,22 @@ Scriptul creează `parohii/index.html` (harta + lista) și câte o pagină `paro
 | `sectiuni` | nu | `[{ "titlu": "Istoric", "paragrafe": ["..."] }]` |
 | `galerie` | nu | `[{ "src": "assets/img/parohii/beius-1.jpg", "alt": "Altarul" }]` |
 | `test` | nu | `true` afișează nota „date de test” |
+
+### Programul slujbelor (`data/program.json`)
+- `coloane`: coloanele programului obișnuit. Fiecare are un `titlu` și `grupuri`; un grup are `zile` (ex. `Luni – Vineri`, poate fi gol) și `slujbe` (`ora`, `slujba`).
+- `cler`: lista de persoane (`rol`, `nume`).
+- `test`: `true` afișează nota „Orele afișate sunt provizorii”.
+- `special`: programe pentru sărbători. Apar automat deasupra programului obișnuit doar între `afisareDeLa` și `afisarePanaLa`:
+
+```json
+"special": [
+  {
+    "titlu": "Programul de Crăciun",
+    "afisareDeLa": "2026-12-15",
+    "afisarePanaLa": "2026-12-27",
+    "slujbe": [
+      { "data": "2026-12-24", "ora": "23:00", "slujba": "..." }
+    ]
+  }
+]
+```

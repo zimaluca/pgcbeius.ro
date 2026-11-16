@@ -1,0 +1,41 @@
+{
+  "test": true,
+  "coloane": [
+    {
+      "titlu": "Duminică și sărbători",
+      "grupuri": [
+        {
+          "zile": "",
+          "slujbe": [
+            { "ora": "08:00", "slujba": "Utrenia" },
+            { "ora": "10:00", "slujba": "Sfânta Liturghie" },
+            { "ora": "17:00", "slujba": "Vecernia" }
+          ]
+        }
+      ]
+    },
+    {
+      "titlu": "În timpul săptămânii",
+      "grupuri": [
+        {
+          "zile": "Luni – Vineri",
+          "slujbe": [
+            { "ora": "07:30", "slujba": "Sfânta Liturghie" },
+            { "ora": "18:00", "slujba": "Vecernia" }
+          ]
+        },
+        {
+          "zile": "Sâmbătă",
+          "slujbe": [
+            { "ora": "09:00", "slujba": "Sfânta Liturghie" }
+          ]
+        }
+      ]
+    }
+  ],
+  "cler": [
+    { "rol": "Protopop", "nume": "pr. [nume]" },
+    { "rol": "Paroh", "nume": "pr. [nume]" }
+  ],
+  "special": []
+}

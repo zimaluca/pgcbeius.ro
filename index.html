@@ -60,7 +60,8 @@
   </nav>
 
   <header class="hero">
-    <div class="hero__fundal" aria-hidden="true"></div>
+    <div class="hero__fundal" aria-hidden="true">
+    </div>
     <div class="hero__strat" aria-hidden="true"></div>
 
     <div class="hero__continut">
@@ -85,33 +86,15 @@
         <h2 class="sectiune__titlu sectiune__titlu--cu-intro" id="titlu-program">Programul slujbelor</h2>
         <p class="intro intro--sub-titlu">La Biserica „Sfinții Trei Ierarhi” din Beiuș.</p>
 
-        <div class="program">
-          <div>
-            <h3>Duminică și sărbători</h3>
-            <ul class="program__lista">
-              <li><time>08:00</time><span>Utrenia</span></li>
-              <li><time>10:00</time><span>Sfânta Liturghie</span></li>
-              <li><time>17:00</time><span>Vecernia</span></li>
-            </ul>
-          </div>
-          <div>
-            <h3>În timpul săptămânii</h3>
-            <p class="program__zi">Luni – Vineri</p>
-            <ul class="program__lista">
-              <li><time>07:30</time><span>Sfânta Liturghie</span></li>
-              <li><time>18:00</time><span>Vecernia</span></li>
-            </ul>
-            <p class="program__zi">Sâmbătă</p>
-            <ul class="program__lista">
-              <li><time>09:00</time><span>Sfânta Liturghie</span></li>
-            </ul>
-          </div>
+        <p class="program__nota" id="program-nota" hidden>Orele afișate sunt provizorii.</p>
+
+        <div id="program-special"></div>
+
+        <div class="program" id="program-coloane" aria-live="polite">
+          <p class="program__stare">Se încarcă programul…</p>
         </div>
 
-        <div class="cler">
-          <p><span class="cler__rol">Protopop</span>pr. [nume]</p>
-          <p><span class="cler__rol">Paroh</span>pr. [nume]</p>
-        </div>
+        <div class="cler" id="program-cler"></div>
       </div>
     </section>
 
@@ -310,6 +293,7 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="assets/js/pagina.js" defer></script>
+  <script src="assets/js/program.js" defer></script>
   <script src="assets/js/harta.js" defer></script>
   <script src="assets/js/hero-cruce.js" defer></script>
 </body>

@@ -1,8 +1,8 @@
 # De făcut înainte de publicare
 
 ## Conținut provizoriu de înlocuit
-- [ ] Programul slujbelor: orele din `index.html` sunt exemple. Se înlocuiesc cu programul real, apoi se mută în `data/program.json`.
-- [ ] Numele protopopului și al parohului.
+- [ ] Programul slujbelor: orele din `data/program.json` sunt exemple. Se înlocuiesc cu programul real și se pune `"test": false`.
+- [ ] Numele protopopului și al parohului (tot în `data/program.json`, la `cler`).
 - [ ] Adresa, telefonul și emailul de contact.
 - [ ] Titularul contului și IBAN-ul (sau se scoate secțiunea de donații).
 - [ ] Textele dintre `[paranteze]` din `index.html`.
