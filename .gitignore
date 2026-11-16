@@ -1,0 +1,13 @@
+# sistem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node
+node_modules/
+
+# materiale brute (filmări și poze needitate, prea mari pentru GitHub)
+_brut/
+
+# editor
+.vscode/
