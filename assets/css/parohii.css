@@ -1,0 +1,243 @@
+.pagina-interioara main {
+  padding-top: var(--inaltime-nav);
+}
+
+.antet-pagina {
+  padding-block: var(--s-8) var(--s-6);
+}
+.antet-pagina h1 {
+  font-size: var(--marime-h1);
+}
+.antet-pagina .intro {
+  margin-top: var(--s-2);
+}
+
+.firimituri {
+  margin-bottom: var(--s-2);
+  font-size: var(--marime-mica);
+  color: var(--text-estompat);
+}
+.firimituri a {
+  color: inherit;
+}
+.firimituri a:hover {
+  color: var(--visiniu);
+}
+
+.nota-test {
+  display: inline-block;
+  margin: var(--s-2) 0 0;
+  padding: 0.35rem 0.75rem;
+  border-left: 2px solid var(--auriu);
+  background: var(--crem-cald);
+  font-size: var(--marime-mica);
+}
+
+.parohii {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: start;
+  padding-bottom: var(--s-12);
+}
+
+.parohii__harta {
+  position: sticky;
+  top: calc(var(--inaltime-nav) + var(--s-3));
+  height: min(72vh, 640px);
+  border: 1px solid rgba(184, 145, 58, 0.5);
+  border-radius: var(--colt-mic);
+}
+
+.parohii__numar {
+  margin-bottom: var(--s-2);
+  color: var(--text-estompat);
+}
+
+.lista-parohii {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(184, 145, 58, 0.55);
+}
+.lista-parohii li {
+  border-bottom: 1px solid rgba(184, 145, 58, 0.55);
+}
+.lista-parohii a {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-2) var(--s-1);
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color var(--durata-scurta) var(--curba);
+}
+.lista-parohii a:hover,
+.lista-parohii a.activ {
+  background: var(--crem-cald);
+}
+.lista__loc {
+  font-family: var(--font-titluri);
+  font-size: var(--marime-h3);
+  line-height: 1.2;
+}
+.lista__hram {
+  font-size: var(--marime-mica);
+  color: var(--text-estompat);
+}
+
+.leaflet-popup-content {
+  font-family: var(--font-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.leaflet-popup-content strong {
+  font-family: var(--font-titluri);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--text-estompat);
+}
+.leaflet-popup-content a {
+  color: var(--visiniu);
+}
+
+.parohie__sus {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s-8);
+  align-items: end;
+}
+
+.parohie__imagine {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  max-height: 640px;
+  overflow: hidden;
+  border-radius: var(--arcada);
+  background: linear-gradient(170deg, #e4d6bd 0%, #cbb791 100%);
+  color: rgba(43, 35, 32, 0.6);
+  font-size: var(--marime-mica);
+}
+.parohie__imagine img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.parohie__imagine::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: 1;
+  border: 1px solid rgba(184, 145, 58, 0.75);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.fisa {
+  margin: 0;
+  border-top: var(--linie-aurie);
+}
+.fisa dt {
+  padding-top: var(--s-2);
+  font-size: var(--marime-mica);
+  color: var(--text-estompat);
+}
+.fisa dd {
+  margin: 0;
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid rgba(184, 145, 58, 0.4);
+}
+.fisa__program {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fisa__program span {
+  margin-right: 0.4em;
+  font-variant-numeric: tabular-nums;
+  color: var(--auriu-text);
+}
+
+.parohie__continut {
+  max-width: var(--latime-text);
+  padding-top: var(--s-12);
+}
+.parohie__sectiune + .parohie__sectiune {
+  margin-top: var(--s-8);
+}
+.parohie__sectiune h2 {
+  margin-bottom: var(--s-3);
+}
+
+.parohie__galerie {
+  padding-top: var(--s-12);
+}
+.parohie__galerie h2 {
+  margin-bottom: var(--s-4);
+}
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s-3);
+}
+.galerie figure {
+  margin: 0;
+}
+.galerie img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--colt-mic);
+}
+
+.parohie__locatie {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: var(--s-6);
+  align-items: center;
+  padding-block: var(--s-12);
+}
+.parohie__locatie h2 {
+  margin-bottom: var(--s-2);
+}
+.parohie__locatie p {
+  color: var(--text-estompat);
+  margin-bottom: var(--s-3);
+}
+.parohie__harta {
+  height: 340px;
+  border: 1px solid rgba(184, 145, 58, 0.5);
+  border-radius: var(--colt-mic);
+}
+
+@media (max-width: 900px) {
+  .parohii,
+  .parohie__sus,
+  .parohie__locatie {
+    grid-template-columns: 1fr;
+  }
+  .parohii__harta {
+    position: relative;
+    top: 0;
+    height: 60vh;
+  }
+  .parohie__imagine {
+    aspect-ratio: 4 / 3.6;
+  }
+}
+
+@media (max-width: 640px) {
+  .antet-pagina {
+    padding-block: var(--s-6) var(--s-4);
+  }
+  .parohie__harta {
+    height: 260px;
+  }
+}

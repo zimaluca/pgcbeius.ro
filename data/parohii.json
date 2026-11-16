@@ -1,0 +1,67 @@
+[
+  {
+    "slug": "beius",
+    "test": true,
+    "nume": "Parohia Greco-Catolică Beiuș",
+    "localitate": "Beiuș",
+    "hram": "Sfinții Trei Ierarhi",
+    "sarbatoareHram": "30 ianuarie",
+    "preot": "pr. [nume]",
+    "adresa": "Str. [stradă și număr], Beiuș, jud. Bihor",
+    "coordonate": [46.6667, 22.35],
+    "rezumat": "Biserica parohială greco-catolică din Beiuș, cu hramul Sfinții Trei Ierarhi.",
+    "imagine": "",
+    "program": [
+      { "zi": "Duminică", "ora": "10:00", "slujba": "Sfânta Liturghie" },
+      { "zi": "Sâmbătă", "ora": "09:00", "slujba": "Sfânta Liturghie" }
+    ],
+    "sectiuni": [
+      {
+        "titlu": "Situația actuală",
+        "paragrafe": ["[Text de completat: viața parohiei astăzi, comunitatea, activitățile.]"]
+      },
+      {
+        "titlu": "Istoric",
+        "paragrafe": ["[Text de completat după cercetare: construcția bisericii, ctitori, momente importante.]"]
+      }
+    ],
+    "galerie": []
+  },
+  {
+    "slug": "parohie-test-nord",
+    "test": true,
+    "nume": "Parohie de test Nord",
+    "localitate": "Localitate de test Nord",
+    "hram": "[hram]",
+    "sarbatoareHram": "",
+    "preot": "pr. [nume]",
+    "adresa": "",
+    "coordonate": [46.715, 22.28],
+    "rezumat": "Pagină de test pentru verificarea șablonului.",
+    "imagine": "",
+    "program": [],
+    "sectiuni": [
+      {
+        "titlu": "Istoric",
+        "paragrafe": ["[Text de test.]"]
+      }
+    ],
+    "galerie": []
+  },
+  {
+    "slug": "parohie-test-sud",
+    "test": true,
+    "nume": "Parohie de test Sud",
+    "localitate": "Localitate de test Sud",
+    "hram": "[hram]",
+    "sarbatoareHram": "",
+    "preot": "",
+    "adresa": "",
+    "coordonate": [46.59, 22.43],
+    "rezumat": "Pagină de test pentru verificarea șablonului.",
+    "imagine": "",
+    "program": [],
+    "sectiuni": [],
+    "galerie": []
+  }
+]

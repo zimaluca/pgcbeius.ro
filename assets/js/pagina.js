@@ -4,13 +4,16 @@
   const comutator = document.querySelector('.nav__comutator');
   const meniu = document.getElementById('meniu');
 
-  const actualizeazaNav = () => {
-    const prag = hero ? hero.offsetHeight - nav.offsetHeight : 0;
-    nav.classList.toggle('nav--solid', window.scrollY > prag);
-  };
-  actualizeazaNav();
-  window.addEventListener('scroll', actualizeazaNav, { passive: true });
-  window.addEventListener('resize', actualizeazaNav);
+  if (hero) {
+    const actualizeazaNav = () => {
+      nav.classList.toggle('nav--solid', window.scrollY > hero.offsetHeight - nav.offsetHeight);
+    };
+    actualizeazaNav();
+    window.addEventListener('scroll', actualizeazaNav, { passive: true });
+    window.addEventListener('resize', actualizeazaNav);
+  } else {
+    nav.classList.add('nav--solid');
+  }
 
   const seteazaMeniu = (deschis) => {
     nav.classList.toggle('nav--deschis', deschis);

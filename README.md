@@ -31,4 +31,25 @@ docs/            planul de design și notițe
 
 ## Actualizare conținut
 - Programul slujbelor: `data/program.json`
-- Parohiile: `data/parohii.json`, apoi rulează scriptul din `scripts/`
+- Parohiile: se modifică `data/parohii.json`, apoi se regenerează paginile:
+
+```
+node scripts/genereaza-parohii.js
+```
+
+Scriptul creează `parohii/index.html` (harta + lista) și câte o pagină `parohii/<slug>.html` pentru fiecare parohie, din șabloanele din `scripts/sabloane/`. Paginile din `parohii/` nu se editează de mână: se modifică datele sau șabloanele și se rulează din nou scriptul.
+
+### Câmpurile unei parohii
+| Câmp | Obligatoriu | Exemplu |
+|---|---|---|
+| `slug` | da | `beius` (doar litere mici, cifre, cratime) |
+| `nume` | da | `Parohia Greco-Catolică Beiuș` |
+| `localitate` | da | `Beiuș` |
+| `coordonate` | da | `[46.6667, 22.35]` |
+| `hram`, `sarbatoareHram`, `preot`, `adresa` | nu | |
+| `rezumat` | nu | o frază, apare în căutări și pe Facebook |
+| `imagine` | nu | `assets/img/parohii/beius.jpg` |
+| `program` | nu | `[{ "zi": "Duminică", "ora": "10:00", "slujba": "Sfânta Liturghie" }]` |
+| `sectiuni` | nu | `[{ "titlu": "Istoric", "paragrafe": ["..."] }]` |
+| `galerie` | nu | `[{ "src": "assets/img/parohii/beius-1.jpg", "alt": "Altarul" }]` |
+| `test` | nu | `true` afișează nota „date de test” |

@@ -31,7 +31,17 @@
     const peMobil = window.matchMedia('(max-width: 640px)').matches;
     harta.setView(peMobil ? BEIUS : [46.66, 22.2], 11);
     straturi().addTo(harta);
-    L.circleMarker(BEIUS, pin).addTo(harta).bindTooltip('Beiuș', { direction: 'top' });
+
+    fetch('data/parohii.json')
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((parohii) => {
+        parohii.forEach((p) => {
+          L.circleMarker(p.coordonate, pin).addTo(harta).bindTooltip(p.localitate, { direction: 'top' });
+        });
+      })
+      .catch(() => {
+        L.circleMarker(BEIUS, pin).addTo(harta).bindTooltip('Beiuș', { direction: 'top' });
+      });
   }
 
   const elContact = document.getElementById('harta-contact');
