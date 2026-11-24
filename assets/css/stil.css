@@ -533,7 +533,7 @@ section[id] { scroll-margin-top: var(--inaltime-nav); }
 .harta-teaser__card p  { color: var(--text-estompat); margin-bottom: var(--s-3); }
 
 .leaflet-tile-pane { filter: grayscale(1) sepia(0.35) contrast(0.92) brightness(1.04); }
-.leaflet-container { font-family: var(--font-text); background: var(--crem-cald); }
+.leaflet-container { font-family: var(--font-text); background: var(--crem-cald); isolation: isolate; }
 
 .contact {
   display: grid;
