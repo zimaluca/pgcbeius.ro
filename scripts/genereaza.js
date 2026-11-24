@@ -32,6 +32,12 @@ const verifica = (p, i) => {
 
 const parohii = JSON.parse(fs.readFileSync(path.join(RADACINA, 'data', 'parohii.json'), 'utf8'));
 parohii.forEach(verifica);
+parohii.forEach((p) => {
+  if (p.imagine && !fs.existsSync(path.join(RADACINA, p.imagine))) {
+    console.warn(`  atenție: imaginea "${p.imagine}" a parohiei "${p.slug}" nu există; se afișează locul gol.`);
+    p.imagine = '';
+  }
+});
 const sluguri = parohii.map((p) => p.slug);
 const duplicate = sluguri.filter((s, i) => sluguri.indexOf(s) !== i);
 if (duplicate.length) throw new Error(`Slug-uri duplicate: ${duplicate.join(', ')}`);
@@ -55,7 +61,9 @@ const randFisa = (eticheta, valoare) =>
   valoare ? `\n          <dt>${eticheta}</dt>\n          <dd>${esc(valoare)}</dd>` : '';
 
 const fisa = (p) => {
-  const program = p.program && p.program.length
+  const program = p.programPrincipal
+    ? '\n          <dt>Program</dt>\n          <dd><a href="../index.html#program">Programul slujbelor</a></dd>'
+    : p.program && p.program.length
     ? `\n          <dt>Program</dt>\n          <dd>\n            <ul class="fisa__program">${p.program
         .map((s) => `\n              <li><span>${esc(s.zi)}, ${esc(s.ora)}</span> ${esc(s.slujba)}</li>`)
         .join('')}\n            </ul>\n          </dd>`
@@ -101,7 +109,7 @@ const paginaParohie = (p) =>
       ? '        <p class="nota-test">Pagină cu date de test. Informațiile reale vor fi adăugate în curând.</p>'
       : '',
     imagine: p.imagine
-      ? `<img src="../${esc(p.imagine)}" alt="Biserica din ${esc(p.localitate)}">`
+      ? `<img src="../${esc(p.imagine)}" alt="${esc(p.nume)} din ${esc(p.localitate)}" width="1050" height="1400">`
       : '<span>Fotografie: exteriorul bisericii</span>',
     fisa: fisa(p),
     sectiuni: sectiuni(p),

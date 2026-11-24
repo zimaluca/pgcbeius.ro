@@ -7,9 +7,18 @@
         {
           "zile": "",
           "slujbe": [
-            { "ora": "08:00", "slujba": "Utrenia" },
-            { "ora": "10:00", "slujba": "Sfânta Liturghie" },
-            { "ora": "17:00", "slujba": "Vecernia" }
+            {
+              "ora": "08:00",
+              "slujba": "Utrenia"
+            },
+            {
+              "ora": "10:00",
+              "slujba": "Sfânta Liturghie"
+            },
+            {
+              "ora": "17:00",
+              "slujba": "Vecernia"
+            }
           ]
         }
       ]
@@ -20,22 +29,33 @@
         {
           "zile": "Luni – Vineri",
           "slujbe": [
-            { "ora": "07:30", "slujba": "Sfânta Liturghie" },
-            { "ora": "18:00", "slujba": "Vecernia" }
+            {
+              "ora": "07:30",
+              "slujba": "Sfânta Liturghie"
+            },
+            {
+              "ora": "18:00",
+              "slujba": "Vecernia"
+            }
           ]
         },
         {
           "zile": "Sâmbătă",
           "slujbe": [
-            { "ora": "09:00", "slujba": "Sfânta Liturghie" }
+            {
+              "ora": "09:00",
+              "slujba": "Sfânta Liturghie"
+            }
           ]
         }
       ]
     }
   ],
   "cler": [
-    { "rol": "Protopop", "nume": "pr. [nume]" },
-    { "rol": "Paroh", "nume": "pr. [nume]" }
+    {
+      "rol": "Paroh și protopop",
+      "nume": "pr. Zorel Zima"
+    }
   ],
   "special": []
 }

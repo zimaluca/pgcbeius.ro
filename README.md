@@ -10,7 +10,6 @@ HTML, CSS și JavaScript simplu, fără framework-uri. Three.js pentru crucea 3D
 ## Structură
 ```
 index.html                       pagina principală
-sfintii-trei-ierarhi.html        Biserica „Sfinții Trei Ierarhi”
 palatul-episcopal.html           Palatul Episcopal Greco-Catolic
 oratoriul-colt-de-rai.html       Oratoriul „Colț de Rai”
 parohii/                         harta mare + paginile parohiilor (generate)
@@ -56,6 +55,7 @@ Aceste pagini nu se editează de mână: se modifică datele, șabloanele sau `s
 | `rezumat` | nu | o frază, apare în căutări și pe Facebook |
 | `imagine` | nu | `assets/img/parohii/beius.jpg` |
 | `program` | nu | `[{ "zi": "Duminică", "ora": "10:00", "slujba": "Sfânta Liturghie" }]` |
+| `programPrincipal` | nu | `true` pune în fișă un link spre programul de pe pagina principală (pentru Beiuș) |
 | `sectiuni` | nu | `[{ "titlu": "Istoric", "paragrafe": ["..."] }]` |
 | `galerie` | nu | `[{ "src": "assets/img/parohii/beius-1.jpg", "alt": "Altarul" }]` |
 | `test` | nu | `true` afișează nota „date de test” |

@@ -8,7 +8,8 @@
 - [ ] Cele 3 imagini din „Locuri din Beiuș” sunt generate cu AI (Higgsfield) și NU arată clădirile reale. Se înlocuiesc cu fotografii reale, iar eticheta „Imagine provizorie” se șterge.
 - [ ] Versetul din hero (acum: Ioan 1, 5).
 - [ ] Coordonatele bisericii în `assets/js/harta.js` (acum: centrul Beiușului).
-- [ ] Parohiile din `data/parohii.json`: cele două parohii de test se șterg, datele Beiușului se completează, se adaugă lista reală, apoi `node scripts/genereaza.js`.
+- [ ] Beiuș (`data/parohii.json`): datele vin din raportul de cercetare. De confirmat cu protopopiatul: anul sfințirii (2002, nu 2003), adresa exactă (Calea Bihorului nr. 28), coordonatele pe OpenStreetMap.
+- [ ] Parohiile din `data/parohii.json`: cele două parohii de test se șterg, se adaugă lista reală, apoi `node scripts/genereaza.js`.
 - [ ] Politica de confidențialitate (`scripts/pagini/politica-de-confidentialitate.html`): se completează câmpurile dintre `[paranteze]` (denumire, adresă, email, perioada de păstrare, data), se verifică și se aprobă de protopopiat, apoi se scoate nota „Ciornă” și se regenerează.
 
 ## Tehnic
