@@ -31,21 +31,6 @@
     if (e.key === 'Escape') seteazaMeniu(false);
   });
 
-  document.querySelectorAll('[data-copiaza]').forEach((buton) => {
-    const textInitial = buton.textContent;
-    buton.addEventListener('click', async () => {
-      const sursa = document.getElementById(buton.dataset.copiaza);
-      const text = sursa.textContent.replace(/\s+/g, '');
-      try {
-        await navigator.clipboard.writeText(text);
-        buton.textContent = 'IBAN copiat';
-      } catch {
-        buton.textContent = 'Selectați IBAN-ul și copiați-l manual';
-      }
-      setTimeout(() => { buton.textContent = textInitial; }, 2500);
-    });
-  });
-
   document.querySelectorAll('[data-an]').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });

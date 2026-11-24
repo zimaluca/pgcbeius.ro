@@ -99,13 +99,6 @@ section[id] { scroll-margin-top: var(--inaltime-nav); }
 .buton--plin { background: var(--visiniu); color: var(--crem); }
 .buton--plin:hover { background: var(--visiniu-inchis); color: var(--crem); }
 
-.buton--deschis {
-  background: transparent;
-  border-color: var(--auriu);
-  color: var(--crem);
-}
-.buton--deschis:hover { background: rgba(250, 246, 238, 0.1); }
-
 .nav {
   position: fixed;
   inset: 0 0 auto;
@@ -542,32 +535,6 @@ section[id] { scroll-margin-top: var(--inaltime-nav); }
 .leaflet-tile-pane { filter: grayscale(1) sepia(0.35) contrast(0.92) brightness(1.04); }
 .leaflet-container { font-family: var(--font-text); background: var(--crem-cald); }
 
-.donatii {
-  padding-block: var(--s-12);
-  background: var(--visiniu);
-  color: var(--crem);
-}
-.donatii__interior {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--s-6);
-}
-.donatii h2 { margin-bottom: var(--s-1); }
-.donatii__interior > div:first-child p { max-width: 40ch; opacity: 0.85; margin: 0; }
-
-.donatii__titular { margin-bottom: 0.25rem; opacity: 0.85; }
-.donatii__iban { font-size: 1.125rem; }
-.donatii__iban code {
-  margin-left: 0.4em;
-  font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
 .contact {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -764,7 +731,6 @@ section[id] { scroll-margin-top: var(--inaltime-nav); }
   .harta-teaser__strat { height: auto; padding-block: 0 var(--s-6); }
   .harta-teaser__card { margin-top: calc(-1 * var(--s-6)); box-shadow: none; }
 
-  .donatii { padding-block: var(--s-8); }
 
   .subsol__jos { flex-direction: column-reverse; align-items: flex-start; }
   .culoare:first-child .culoare__sens { right: auto; left: -8px; }

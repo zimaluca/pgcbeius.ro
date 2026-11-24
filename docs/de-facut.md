@@ -4,7 +4,6 @@
 - [ ] Programul slujbelor: orele din `data/program.json` sunt exemple. Se înlocuiesc cu programul real și se pune `"test": false`.
 - [ ] Numele protopopului și al parohului (tot în `data/program.json`, la `cler`).
 - [ ] Adresa, telefonul și emailul de contact.
-- [ ] Titularul contului și IBAN-ul (sau se scoate secțiunea de donații).
 - [ ] Textele dintre `[paranteze]` din `index.html`.
 - [ ] Cele 3 imagini din „Locuri din Beiuș” sunt generate cu AI (Higgsfield) și NU arată clădirile reale. Se înlocuiesc cu fotografii reale, iar eticheta „Imagine provizorie” se șterge.
 - [ ] Versetul din hero (acum: Ioan 1, 5).
