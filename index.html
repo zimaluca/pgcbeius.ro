@@ -202,18 +202,23 @@
           <div id="harta-contact" class="contact__harta" role="img" aria-label="Hartă cu locația bisericii în Beiuș"></div>
         </div>
 
-        <form class="formular" action="https://formspree.io/f/XXXX" method="POST">
+        <form class="formular" action="https://formspree.io/f/XXXX" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Mesaj nou de pe pgcbeius.ro">
+
           <div class="camp">
             <label for="nume">Nume</label>
-            <input id="nume" name="nume" type="text" autocomplete="name" required>
+            <input id="nume" name="nume" type="text" autocomplete="name" required aria-describedby="eroare-nume">
+            <p class="camp__eroare" id="eroare-nume" hidden></p>
           </div>
           <div class="camp">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+            <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="eroare-email">
+            <p class="camp__eroare" id="eroare-email" hidden></p>
           </div>
           <div class="camp">
             <label for="mesaj">Mesaj</label>
-            <textarea id="mesaj" name="mesaj" rows="6" required></textarea>
+            <textarea id="mesaj" name="mesaj" rows="6" required aria-describedby="eroare-mesaj"></textarea>
+            <p class="camp__eroare" id="eroare-mesaj" hidden></p>
           </div>
 
           <div class="ascuns" aria-hidden="true">
@@ -221,12 +226,16 @@
             <input id="_gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
           </div>
 
-          <label class="acord">
-            <input type="checkbox" name="acord" required>
-            <span>Sunt de acord ca protopopiatul să folosească datele mele doar pentru a-mi răspunde, conform <a href="politica-de-confidentialitate.html">Politicii de confidențialitate</a>.</span>
-          </label>
+          <div class="camp camp--acord">
+            <label class="acord">
+              <input id="acord" type="checkbox" name="acord" required aria-describedby="eroare-acord">
+              <span>Sunt de acord ca protopopiatul să folosească datele mele doar pentru a-mi răspunde, conform <a href="politica-de-confidentialitate.html">Politicii de confidențialitate</a>.</span>
+            </label>
+            <p class="camp__eroare" id="eroare-acord" hidden></p>
+          </div>
 
           <button class="buton buton--plin" type="submit">Trimite mesajul</button>
+          <p class="formular__stare" role="status" aria-live="polite" hidden></p>
         </form>
       </div>
     </section>
@@ -278,6 +287,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="assets/js/pagina.js" defer></script>
   <script src="assets/js/program.js" defer></script>
+  <script src="assets/js/contact.js" defer></script>
   <script src="assets/js/harta.js" defer></script>
   <script src="assets/js/hero-cruce.js" defer></script>
 </body>

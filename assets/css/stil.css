@@ -578,11 +578,39 @@ section[id] { scroll-margin-top: var(--inaltime-nav); }
 .camp textarea:focus { border-color: var(--visiniu); }
 .camp textarea { resize: vertical; min-height: 9rem; }
 
+.camp__eroare {
+  margin: 0;
+  font-size: var(--marime-mica);
+  color: var(--visiniu);
+}
+.camp input[aria-invalid="true"],
+.camp textarea[aria-invalid="true"] {
+  border-color: var(--visiniu);
+  box-shadow: 0 0 0 1px var(--visiniu);
+}
+.camp--acord {
+  margin-bottom: var(--s-4);
+}
+
+.buton:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.formular__stare {
+  margin: var(--s-3) 0 0;
+  padding: var(--s-2) var(--s-3);
+  border-left: 2px solid var(--auriu);
+  background: var(--crem-cald);
+}
+.formular__stare--eroare {
+  border-left-color: var(--visiniu);
+}
+
 .acord {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
-  margin-bottom: var(--s-4);
   font-size: var(--marime-mica);
   line-height: 1.5;
 }
