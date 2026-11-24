@@ -87,13 +87,41 @@ const sectiuni = (p) => {
   return `      <div class="parohie__continut">\n${continut}\n      </div>\n`;
 };
 
-const galerie = (p) => {
-  if (!p.galerie || !p.galerie.length) return '';
-  const imagini = p.galerie
-    .map((img) => `          <figure><img src="../${esc(img.src)}" alt="${esc(img.alt || '')}" loading="lazy"></figure>`)
-    .join('\n');
-  return `      <section class="parohie__galerie" aria-labelledby="titlu-galerie">\n        <h2 id="titlu-galerie">Din interior</h2>\n        <div class="galerie">\n${imagini}\n        </div>\n      </section>\n`;
+const EXTENSII_IMAGINI = /\.(jpe?g|png|webp|avif)$/i;
+
+const descriereDinFisier = (fisier) => {
+  const text = path.parse(fisier).name.replace(/^\d+[-_ ]*/, '').replace(/[-_]+/g, ' ').trim();
+  return text ? text.charAt(0).toUpperCase() + text.slice(1) : '';
 };
+
+const imaginiGalerie = (cheie, explicite = []) => {
+  const folderRelativ = `assets/img/galerii/${cheie}`;
+  const folder = path.join(RADACINA, folderRelativ);
+  const lista = explicite.map((img) => ({ src: img.src, alt: img.alt || descriereDinFisier(img.src) }));
+  if (fs.existsSync(folder)) {
+    fs.readdirSync(folder)
+      .filter((f) => EXTENSII_IMAGINI.test(f))
+      .sort((a, b) => a.localeCompare(b, 'ro', { numeric: true }))
+      .forEach((f) => {
+        const src = `${folderRelativ}/${f}`;
+        if (!lista.some((img) => img.src === src)) lista.push({ src, alt: descriereDinFisier(f) });
+      });
+  }
+  return lista;
+};
+
+const galerieHtml = (imagini, radacina) => {
+  if (!imagini.length) return '';
+  const elemente = imagini
+    .map((img) => {
+      const src = radacina + encodeURI(img.src);
+      return `          <li><a href="${esc(src)}" data-galerie><img src="${esc(src)}" alt="${esc(img.alt)}" loading="lazy"></a></li>`;
+    })
+    .join('\n');
+  return `      <section class="galerie-foto" aria-labelledby="titlu-galerie">\n        <h2 id="titlu-galerie">Galerie foto</h2>\n        <ul class="galerie">\n${elemente}\n        </ul>\n      </section>\n`;
+};
+
+const galerie = (p) => galerieHtml(imaginiGalerie(p.slug, p.galerie || []), '../');
 
 const paginaParohie = (p) =>
   completeaza(citeste('parohie.html'), {

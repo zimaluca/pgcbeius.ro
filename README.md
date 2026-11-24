@@ -57,8 +57,22 @@ Aceste pagini nu se editează de mână: se modifică datele, șabloanele sau `s
 | `program` | nu | `[{ "zi": "Duminică", "ora": "10:00", "slujba": "Sfânta Liturghie" }]` |
 | `programPrincipal` | nu | `true` pune în fișă un link spre programul de pe pagina principală (pentru Beiuș) |
 | `sectiuni` | nu | `[{ "titlu": "Istoric", "paragrafe": ["..."] }]` |
-| `galerie` | nu | `[{ "src": "assets/img/parohii/beius-1.jpg", "alt": "Altarul" }]` |
+| `galerie` | nu | de obicei nu e nevoie: galeria se face singură din folder (vezi mai jos) |
 | `test` | nu | `true` afișează nota „date de test” |
+
+### Galeria foto
+La finalul fiecărei pagini de parohie apare o galerie, dacă există poze în folderul ei:
+
+```
+assets/img/galerii/<slug>/     ex. assets/img/galerii/beius/
+```
+
+1. Pune pozele în folder (`.jpg`, `.png`, `.webp`). Ideal cel mult 1600 px pe latura mare.
+2. Ordinea e dată de numele fișierelor, deci pune un număr în față: `01-iconostasul.jpg`, `02-altarul.jpg`.
+3. Descrierea pozei se face din nume: `03-pictura-bolții.jpg` devine „Pictura bolții”. Cratimele devin spații, numărul din față dispare.
+4. Rulează `node scripts/genereaza.js`.
+
+La click, poza se deschide pe tot ecranul. Te poți mișca între poze cu săgețile de pe ecran, cu săgețile de la tastatură sau glisând pe telefon; Esc sau × închide galeria.
 
 ### Programul slujbelor (`data/program.json`)
 - `coloane`: coloanele programului obișnuit. Fiecare are un `titlu` și `grupuri`; un grup are `zile` (ex. `Luni – Vineri`, poate fi gol) și `slujbe` (`ora`, `slujba`).

@@ -131,3 +131,145 @@
 .pagina-interioara main {
   flex: 1;
 }
+
+.galerie-foto {
+  padding-block: var(--s-8) var(--s-12);
+  border-top: 1px solid rgba(184, 145, 58, 0.45);
+}
+.galerie-foto h2 {
+  margin-bottom: var(--s-4);
+}
+
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--s-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.galerie a {
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--colt-mic);
+  background: var(--crem-cald);
+  cursor: zoom-in;
+}
+.galerie img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vizualizator {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(28, 22, 20, 0.96);
+  color: var(--crem);
+  touch-action: pan-y;
+  user-select: none;
+}
+.vizualizator[open] {
+  display: grid;
+  place-items: center;
+}
+.vizualizator::backdrop {
+  background: rgba(28, 22, 20, 0.96);
+}
+
+.vizualizator__figura {
+  display: grid;
+  justify-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  padding: var(--s-8) var(--s-12);
+}
+.vizualizator__imagine {
+  max-width: 100%;
+  max-height: calc(100dvh - 10rem);
+  object-fit: contain;
+}
+.vizualizator__descriere {
+  max-width: var(--latime-text);
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0.85;
+}
+.vizualizator__numar {
+  position: absolute;
+  top: var(--s-3);
+  left: var(--s-3);
+  margin: 0;
+  font-size: var(--marime-mica);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.75;
+}
+
+.vizualizator__buton {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid rgba(184, 145, 58, 0.6);
+  border-radius: 50%;
+  background: rgba(250, 246, 238, 0.08);
+  color: var(--crem);
+  font: 400 1.75rem/1 var(--font-titluri);
+  cursor: pointer;
+  transition: background-color var(--durata-scurta) var(--curba);
+}
+.vizualizator__buton:hover {
+  background: rgba(250, 246, 238, 0.2);
+}
+.vizualizator__buton:focus-visible {
+  outline-color: var(--auriu);
+}
+.vizualizator__inchide {
+  top: var(--s-2);
+  right: var(--s-2);
+}
+.vizualizator__inapoi,
+.vizualizator__inainte {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.vizualizator__inapoi {
+  left: var(--s-2);
+}
+.vizualizator__inainte {
+  right: var(--s-2);
+}
+
+.fara-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .vizualizator__figura {
+    padding: var(--s-8) var(--s-2) var(--s-12);
+  }
+  .vizualizator__imagine {
+    max-height: calc(100dvh - 12rem);
+  }
+  .vizualizator__inapoi,
+  .vizualizator__inainte {
+    top: auto;
+    bottom: var(--s-3);
+    transform: none;
+  }
+  .vizualizator__inapoi {
+    left: calc(50% - 3.5rem);
+  }
+  .vizualizator__inainte {
+    right: calc(50% - 3.5rem);
+  }
+}

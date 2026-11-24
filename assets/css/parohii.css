@@ -141,27 +141,6 @@
   margin-bottom: var(--s-3);
 }
 
-.parohie__galerie {
-  padding-top: var(--s-12);
-}
-.parohie__galerie h2 {
-  margin-bottom: var(--s-4);
-}
-.galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--s-3);
-}
-.galerie figure {
-  margin: 0;
-}
-.galerie img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--colt-mic);
-}
-
 .parohie__locatie {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
