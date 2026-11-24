@@ -57,6 +57,7 @@ Parohiile și instituțiile folosesc aceleași șabloane: `scripts/sabloane/cole
 | `hram`, `sarbatoareHram`, `preot`, `adresa` | nu | |
 | `rezumat` | nu | o frază, apare în căutări și pe Facebook |
 | `imagine` | nu | `assets/img/parohii/beius.jpg` |
+| `imagineFocus` | nu | `70% 50%`: ce parte a pozei rămâne vizibilă în arcadă (orizontal, vertical); implicit centrul |
 | `program` | nu | `[{ "zi": "Duminică", "ora": "10:00", "slujba": "Sfânta Liturghie" }]` |
 | `programPrincipal` | nu | `true` pune în fișă un link spre programul de pe pagina principală (pentru Beiuș) |
 | `sectiuni` | nu | `[{ "titlu": "Istoric", "paragrafe": ["..."] }]` |

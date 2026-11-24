@@ -13,7 +13,8 @@
       22.3582
     ],
     "rezumat": "Oratoriul „Colț de Rai” este centrul pentru copii și tineri al Parohiei Greco-Catolice Beiuș, cu activități săptămânale și tabere din 2015.",
-    "imagine": "",
+    "imagine": "assets/img/institutii/oratoriul-colt-de-rai.jpg",
+    "imagineFocus": "70% 50%",
     "program": [
       { "zi": "Vineri", "ora": "16:00–20:00", "slujba": "Întâlnirea oratoriului" }
     ],

@@ -5,11 +5,11 @@
 - [ ] Numele protopopului și al parohului (tot în `data/program.json`, la `cler`).
 - [ ] Adresa, telefonul și emailul de contact.
 - [ ] Textele dintre `[paranteze]` din `index.html`.
-- [ ] Cele 3 imagini din „Locuri din Beiuș” sunt generate cu AI (Higgsfield) și NU arată clădirile reale. Se înlocuiesc cu fotografii reale, iar eticheta „Imagine provizorie” se șterge.
+- [ ] Imaginea Palatului din „Locuri din Beiuș” e generată cu AI (Higgsfield) și NU arată clădirea reală. Se înlocuiește cu o fotografie reală, iar eticheta „Imagine provizorie” se șterge. Biserica și Oratoriul au deja fotografii reale.
 - [ ] Versetul din hero (acum: Ioan 1, 5).
 - [ ] Coordonatele bisericii în `assets/js/harta.js` (acum: centrul Beiușului).
 - [ ] Beiuș (`data/parohii.json`): datele vin din raportul de cercetare. De confirmat cu protopopiatul: anul sfințirii (2002, nu 2003), adresa exactă (Calea Bihorului nr. 28), coordonatele pe OpenStreetMap.
-- [ ] Oratoriul „Colț de Rai” (`data/institutii.json`): numărul de pe Calea Bihorului („53-37” sau „35-37”?) și coordonatele pinului din Google Maps. Acum sunt provizoriu coordonatele bisericii. Fotografia clădirii în `assets/img/institutii/` (și `"imagine"` în JSON); pozele cu copii doar cu acordul scris al părinților. Răspunsurile rămase deschise sunt în raportul de cercetare din proiect.
+- [ ] Oratoriul „Colț de Rai” (`data/institutii.json`): numărul de pe Calea Bihorului („53-37” sau „35-37”?) și coordonatele pinului din Google Maps. Acum sunt provizoriu coordonatele bisericii. Fotografia clădirii (`assets/img/institutii/oratoriul-colt-de-rai.jpg`) are doar 680×510 px; ar fi bine una mai mare, făcută pe verticală. Pe plăcuța de lângă ușă pare să scrie numărul (poate „28 B”), de verificat la fața locului. Pozele cu copii doar cu acordul scris al părinților. Răspunsurile rămase deschise sunt în raportul de cercetare din proiect.
 - [ ] Pagina Palatului Episcopal: probabil tot în `data/institutii.json`, după cercetare. Până atunci, cardul de pe prima pagină duce la `palatul-episcopal.html`, care nu există încă.
 - [ ] Parohiile din `data/parohii.json`: cele două parohii de test se șterg, se adaugă lista reală, apoi `node scripts/genereaza.js`.
 - [ ] Politica de confidențialitate (`scripts/pagini/politica-de-confidentialitate.html`): se completează câmpurile dintre `[paranteze]` (denumire, adresă, email, perioada de păstrare, data), se verifică și se aprobă de protopopiat, apoi se scoate nota „Ciornă” și se regenerează.

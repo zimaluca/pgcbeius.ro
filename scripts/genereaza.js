@@ -191,7 +191,7 @@ const paginaElement = (p, c) =>
       ? '        <p class="nota-test">Pagină cu date de test. Informațiile reale vor fi adăugate în curând.</p>'
       : '',
     imagine: p.imagine
-      ? `<img src="../${esc(p.imagine)}" alt="${esc(p.nume)} din ${esc(p.localitate)}" width="1050" height="1400">`
+      ? `<img src="../${esc(p.imagine)}" alt="${esc(p.nume)} din ${esc(p.localitate)}"${p.imagineFocus ? ` style="object-position: ${esc(p.imagineFocus)}"` : ''}>`
       : `<span>${esc(c.locImagine)}</span>`,
     fisa: fisa(p, c),
     sectiuni: sectiuni(p),
