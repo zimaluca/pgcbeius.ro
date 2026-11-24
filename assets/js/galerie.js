@@ -2,6 +2,9 @@
   const linkuri = [...document.querySelectorAll('[data-galerie]')];
   if (!linkuri.length) return;
 
+  const icon = (d) =>
+    `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
+
   const dialog = document.createElement('dialog');
   dialog.className = 'vizualizator';
   dialog.setAttribute('aria-label', 'Galerie foto');
@@ -11,9 +14,9 @@
       <figcaption class="vizualizator__descriere"></figcaption>
     </figure>
     <p class="vizualizator__numar" aria-live="polite"></p>
-    <button class="vizualizator__buton vizualizator__inchide" type="button" aria-label="Închide galeria">×</button>
-    <button class="vizualizator__buton vizualizator__inapoi" type="button" aria-label="Fotografia anterioară">‹</button>
-    <button class="vizualizator__buton vizualizator__inainte" type="button" aria-label="Fotografia următoare">›</button>
+    <button class="vizualizator__buton vizualizator__inchide" type="button" aria-label="Închide galeria">${icon('M6 6l12 12M18 6L6 18')}</button>
+    <button class="vizualizator__buton vizualizator__inapoi" type="button" aria-label="Fotografia anterioară">${icon('M15 5l-6 7 6 7')}</button>
+    <button class="vizualizator__buton vizualizator__inainte" type="button" aria-label="Fotografia următoare">${icon('M9 5l6 7-6 7')}</button>
   `;
   document.body.append(dialog);
 
@@ -74,6 +77,22 @@
     if (e.key === 'ArrowLeft') arata(curent - 1);
     if (e.key === 'ArrowRight') arata(curent + 1);
   });
+
+  let rotita = 0;
+  let ultimaSchimbare = 0;
+  dialog.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (total < 2) return;
+    const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    const acum = performance.now();
+    if (acum - ultimaSchimbare < 350) return;
+    rotita += delta;
+    if (Math.abs(rotita) >= 40) {
+      arata(curent + (rotita > 0 ? 1 : -1));
+      rotita = 0;
+      ultimaSchimbare = acum;
+    }
+  }, { passive: false });
 
   let startX = null;
   dialog.addEventListener('pointerdown', (e) => {
