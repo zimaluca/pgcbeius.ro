@@ -9,6 +9,8 @@
 - [ ] Versetul din hero (acum: Ioan 1, 5).
 - [ ] Coordonatele bisericii în `assets/js/harta.js` (acum: centrul Beiușului).
 - [ ] Beiuș (`data/parohii.json`): datele vin din raportul de cercetare. De confirmat cu protopopiatul: anul sfințirii (2002, nu 2003), adresa exactă (Calea Bihorului nr. 28), coordonatele pe OpenStreetMap.
+- [ ] Oratoriul „Colț de Rai” (`data/institutii.json`): numărul de pe Calea Bihorului („53-37” sau „35-37”?) și coordonatele pinului din Google Maps. Acum sunt provizoriu coordonatele bisericii. Fotografia clădirii în `assets/img/institutii/` (și `"imagine"` în JSON); pozele cu copii doar cu acordul scris al părinților. Răspunsurile rămase deschise sunt în raportul de cercetare din proiect.
+- [ ] Pagina Palatului Episcopal: probabil tot în `data/institutii.json`, după cercetare. Până atunci, cardul de pe prima pagină duce la `palatul-episcopal.html`, care nu există încă.
 - [ ] Parohiile din `data/parohii.json`: cele două parohii de test se șterg, se adaugă lista reală, apoi `node scripts/genereaza.js`.
 - [ ] Politica de confidențialitate (`scripts/pagini/politica-de-confidentialitate.html`): se completează câmpurile dintre `[paranteze]` (denumire, adresă, email, perioada de păstrare, data), se verifică și se aprobă de protopopiat, apoi se scoate nota „Ciornă” și se regenerează.
 

@@ -4,7 +4,6 @@ const path = require('path');
 const SITE = 'https://pgcbeius.ro';
 const RADACINA = path.join(__dirname, '..');
 const SABLOANE = path.join(__dirname, 'sabloane');
-const IESIRE = path.join(RADACINA, 'parohii');
 
 const citeste = (fisier) => fs.readFileSync(path.join(SABLOANE, fisier), 'utf8');
 
@@ -23,25 +22,83 @@ const completeaza = (sablon, valori) =>
 
 const jsonInPagina = (date) => JSON.stringify(date).replace(/</g, '\\u003c');
 
-const verifica = (p, i) => {
-  const lipsa = ['slug', 'nume', 'localitate', 'coordonate'].filter((c) => !p[c]);
-  if (lipsa.length) throw new Error(`Parohia #${i + 1} nu are: ${lipsa.join(', ')}`);
+const COLECTII = [
+  {
+    fisierDate: 'parohii.json',
+    dosar: 'parohii',
+    parametru: 'parohie',
+    titluLista: 'Parohiile protopopiatului',
+    titluOg: 'Parohiile Protopopiatului Greco-Catolic Beiuș',
+    firimitura: 'Parohii',
+    descriere: 'Harta și lista parohiilor greco-catolice ale Protopopiatului Beiuș.',
+    intro: 'Comunitățile greco-catolice ale Protopopiatului Beiuș. Alegeți o parohie de pe hartă sau din listă.',
+    etichetaHarta: 'Harta parohiilor',
+    textLink: 'Pagina parohiei',
+    numar: (n) => (n === 1 ? '1 parohie' : `${n} parohii`),
+    ordine: (a, b) => a.localitate.localeCompare(b.localitate, 'ro'),
+    titluInLista: (p) => p.localitate,
+    detaliu: (p) => (p.hram ? `Hram: ${p.hram}` : ''),
+    eticheta: (p) => p.localitate,
+    campuri: [
+      ['Hram', 'hram'],
+      ['Sărbătoarea hramului', 'sarbatoareHram'],
+      ['Preot paroh', 'preot'],
+      ['Adresă', 'adresa'],
+    ],
+    locImagine: 'Fotografie: exteriorul bisericii',
+    etichetaHartaMica: (p) => `Hartă cu locația bisericii din ${p.localitate}`,
+  },
+  {
+    fisierDate: 'institutii.json',
+    dosar: 'institutii',
+    parametru: 'institutie',
+    titluLista: 'Instituțiile protopopiatului',
+    titluOg: 'Instituțiile Protopopiatului Greco-Catolic Beiuș',
+    firimitura: 'Instituții',
+    descriere: 'Instituțiile Protopopiatului Greco-Catolic Beiuș: ce fac, unde se află și când sunt deschise.',
+    intro: 'Locurile în care protopopiatul lucrează cu copiii, tinerii și comunitatea, pe lângă biserici. Alegeți o instituție de pe hartă sau din listă.',
+    etichetaHarta: 'Harta instituțiilor',
+    textLink: 'Pagina instituției',
+    numar: (n) => (n === 1 ? '1 instituție' : `${n} instituții`),
+    ordine: (a, b) => a.nume.localeCompare(b.nume, 'ro'),
+    titluInLista: (p) => p.nume,
+    detaliu: (p) => p.tip || '',
+    eticheta: (p) => p.nume,
+    campuri: [
+      ['Ce este', 'tip'],
+      ['Ocrotitor', 'ocrotitor'],
+      ['Coordonator', 'coordonator'],
+      ['Asistent spiritual', 'asistentSpiritual'],
+      ['Adresă', 'adresa'],
+    ],
+    locImagine: 'Fotografie: clădirea',
+    etichetaHartaMica: (p) => `Hartă cu locația: ${p.nume}, ${p.localitate}`,
+  },
+];
+
+const verifica = (p, i, c) => {
+  const lipsa = ['slug', 'nume', 'localitate', 'coordonate'].filter((camp) => !p[camp]);
+  if (lipsa.length) throw new Error(`${c.fisierDate}, elementul #${i + 1} nu are: ${lipsa.join(', ')}`);
   if (!/^[a-z0-9-]+$/.test(p.slug)) throw new Error(`Slug invalid: "${p.slug}" (doar litere mici, cifre și cratime)`);
   if (!Array.isArray(p.coordonate) || p.coordonate.length !== 2) throw new Error(`Coordonate invalide la "${p.slug}"`);
 };
 
-const parohii = JSON.parse(fs.readFileSync(path.join(RADACINA, 'data', 'parohii.json'), 'utf8'));
-parohii.forEach(verifica);
-parohii.forEach((p) => {
-  if (p.imagine && !fs.existsSync(path.join(RADACINA, p.imagine))) {
-    console.warn(`  atenție: imaginea "${p.imagine}" a parohiei "${p.slug}" nu există; se afișează locul gol.`);
-    p.imagine = '';
-  }
-});
-const sluguri = parohii.map((p) => p.slug);
-const duplicate = sluguri.filter((s, i) => sluguri.indexOf(s) !== i);
-if (duplicate.length) throw new Error(`Slug-uri duplicate: ${duplicate.join(', ')}`);
-parohii.sort((a, b) => a.localitate.localeCompare(b.localitate, 'ro'));
+const incarca = (c) => {
+  const fisier = path.join(RADACINA, 'data', c.fisierDate);
+  if (!fs.existsSync(fisier)) return [];
+  const elemente = JSON.parse(fs.readFileSync(fisier, 'utf8'));
+  elemente.forEach((p, i) => verifica(p, i, c));
+  elemente.forEach((p) => {
+    if (p.imagine && !fs.existsSync(path.join(RADACINA, p.imagine))) {
+      console.warn(`  atenție: imaginea "${p.imagine}" de la "${p.slug}" nu există; se afișează locul gol.`);
+      p.imagine = '';
+    }
+  });
+  const sluguri = elemente.map((p) => p.slug);
+  const duplicate = sluguri.filter((s, i) => sluguri.indexOf(s) !== i);
+  if (duplicate.length) throw new Error(`Slug-uri duplicate în ${c.fisierDate}: ${duplicate.join(', ')}`);
+  return elemente.sort(c.ordine);
+};
 
 const partiCompune = (radacina) => ({
   nav: completeaza(citeste('_nav.html'), { radacina }),
@@ -49,18 +106,18 @@ const partiCompune = (radacina) => ({
 });
 const comune = partiCompune('../');
 
-const pentruHarta = (p) => ({
+const pentruHarta = (p, c) => ({
   slug: p.slug,
   nume: p.nume,
-  localitate: p.localitate,
-  hram: p.hram || '',
+  detaliu: c.detaliu(p),
+  eticheta: c.eticheta(p),
   coordonate: p.coordonate,
 });
 
 const randFisa = (eticheta, valoare) =>
   valoare ? `\n          <dt>${eticheta}</dt>\n          <dd>${esc(valoare)}</dd>` : '';
 
-const fisa = (p) => {
+const fisa = (p, c) => {
   const program = p.programPrincipal
     ? '\n          <dt>Program</dt>\n          <dd><a href="../index.html#program">Programul slujbelor</a></dd>'
     : p.program && p.program.length
@@ -68,13 +125,7 @@ const fisa = (p) => {
         .map((s) => `\n              <li><span>${esc(s.zi)}, ${esc(s.ora)}</span> ${esc(s.slujba)}</li>`)
         .join('')}\n            </ul>\n          </dd>`
     : '';
-  return [
-    randFisa('Hram', p.hram),
-    randFisa('Sărbătoarea hramului', p.sarbatoareHram),
-    randFisa('Preot paroh', p.preot),
-    randFisa('Adresă', p.adresa),
-    program,
-  ].join('') + '\n        ';
+  return c.campuri.map(([eticheta, camp]) => randFisa(eticheta, p[camp])).join('') + program + '\n        ';
 };
 
 const sectiuni = (p) => {
@@ -123,56 +174,78 @@ const galerieHtml = (imagini, radacina) => {
 
 const galerie = (p) => galerieHtml(imaginiGalerie(p.slug, p.galerie || []), '../');
 
-const paginaParohie = (p) =>
-  completeaza(citeste('parohie.html'), {
+const paginaElement = (p, c) =>
+  completeaza(citeste('element.html'), {
     ...comune,
     titlu: esc(`${p.nume} | Protopopiatul Greco-Catolic Beiuș`),
     descriere: esc(p.rezumat || `${p.nume}, ${p.localitate}.`),
-    url: `${SITE}/parohii/${p.slug}.html`,
+    url: `${SITE}/${c.dosar}/${p.slug}.html`,
     ogImagine: p.imagine ? `  <meta property="og:image" content="${SITE}/${esc(p.imagine)}">` : '',
+    titluLista: esc(c.titluLista),
     nume: esc(p.nume),
     localitate: esc(p.localitate),
     slug: p.slug,
+    parametru: c.parametru,
+    textLink: esc(c.textLink),
     notaTest: p.test
       ? '        <p class="nota-test">Pagină cu date de test. Informațiile reale vor fi adăugate în curând.</p>'
       : '',
     imagine: p.imagine
       ? `<img src="../${esc(p.imagine)}" alt="${esc(p.nume)} din ${esc(p.localitate)}" width="1050" height="1400">`
-      : '<span>Fotografie: exteriorul bisericii</span>',
-    fisa: fisa(p),
+      : `<span>${esc(c.locImagine)}</span>`,
+    fisa: fisa(p, c),
     sectiuni: sectiuni(p),
     galerie: galerie(p),
     adresaText: esc(p.adresa || p.localitate),
-    date: jsonInPagina([pentruHarta(p)]),
+    etichetaHartaMica: esc(c.etichetaHartaMica(p)),
+    date: jsonInPagina([pentruHarta(p, c)]),
   });
 
-const paginaLista = () =>
-  completeaza(citeste('parohii.html'), {
+const paginaLista = (elemente, c) =>
+  completeaza(citeste('colectie.html'), {
     ...comune,
-    url: `${SITE}/parohii/`,
-    numar: parohii.length === 1 ? '1 parohie' : `${parohii.length} parohii`,
-    lista: parohii
-      .map((p) => `            <li><a href="${p.slug}.html" data-slug="${p.slug}"><span class="lista__loc">${esc(p.localitate)}</span><span class="lista__hram">${esc(p.hram ? `Hram: ${p.hram}` : p.nume)}</span></a></li>`)
+    url: `${SITE}/${c.dosar}/`,
+    titluLista: esc(c.titluLista),
+    titluOg: esc(c.titluOg),
+    firimitura: esc(c.firimitura),
+    descriere: esc(c.descriere),
+    intro: esc(c.intro),
+    etichetaHarta: esc(c.etichetaHarta),
+    parametru: c.parametru,
+    textLink: esc(c.textLink),
+    numar: c.numar(elemente.length),
+    lista: elemente
+      .map((p) => {
+        const detaliu = c.detaliu(p) || p.nume;
+        return `            <li><a href="${p.slug}.html" data-slug="${p.slug}"><span class="lista__loc">${esc(c.titluInLista(p))}</span><span class="lista__hram">${esc(detaliu)}</span></a></li>`;
+      })
       .join('\n'),
-    date: jsonInPagina(parohii.map(pentruHarta)),
+    date: jsonInPagina(elemente.map((p) => pentruHarta(p, c))),
   });
 
-fs.mkdirSync(IESIRE, { recursive: true });
+let total = 0;
+COLECTII.forEach((c) => {
+  const elemente = incarca(c);
+  const iesire = path.join(RADACINA, c.dosar);
+  fs.mkdirSync(iesire, { recursive: true });
 
-const vechi = fs.readdirSync(IESIRE).filter((f) => f.endsWith('.html') && f !== 'index.html');
-vechi
-  .filter((f) => !sluguri.includes(f.replace(/\.html$/, '')))
-  .forEach((f) => {
-    fs.unlinkSync(path.join(IESIRE, f));
-    console.log(`  șters:   parohii/${f}`);
+  const sluguri = elemente.map((p) => p.slug);
+  fs.readdirSync(iesire)
+    .filter((f) => f.endsWith('.html') && f !== 'index.html')
+    .filter((f) => !sluguri.includes(f.replace(/\.html$/, '')))
+    .forEach((f) => {
+      fs.unlinkSync(path.join(iesire, f));
+      console.log(`  șters:   ${c.dosar}/${f}`);
+    });
+
+  elemente.forEach((p) => {
+    fs.writeFileSync(path.join(iesire, `${p.slug}.html`), paginaElement(p, c));
+    console.log(`  generat: ${c.dosar}/${p.slug}.html`);
   });
-
-parohii.forEach((p) => {
-  fs.writeFileSync(path.join(IESIRE, `${p.slug}.html`), paginaParohie(p));
-  console.log(`  generat: parohii/${p.slug}.html`);
+  fs.writeFileSync(path.join(iesire, 'index.html'), paginaLista(elemente, c));
+  console.log(`  generat: ${c.dosar}/index.html`);
+  total += elemente.length;
 });
-fs.writeFileSync(path.join(IESIRE, 'index.html'), paginaLista());
-console.log('  generat: parohii/index.html');
 
 const PAGINI = [
   {
@@ -210,4 +283,4 @@ PAGINI.forEach((pg) => {
   console.log(`  generat: ${pg.fisier}`);
 });
 
-console.log(`Gata: ${parohii.length} parohii și ${PAGINI.length} pagini.`);
+console.log(`Gata: ${total} pagini de parohii și instituții și ${PAGINI.length} pagini simple.`);

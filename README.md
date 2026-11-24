@@ -11,8 +11,8 @@ HTML, CSS și JavaScript simplu, fără framework-uri. Three.js pentru crucea 3D
 ```
 index.html                       pagina principală
 palatul-episcopal.html           Palatul Episcopal Greco-Catolic
-oratoriul-colt-de-rai.html       Oratoriul „Colț de Rai”
 parohii/                         harta mare + paginile parohiilor (generate)
+institutii/                      harta + paginile instituțiilor, ex. Oratoriul „Colț de Rai” (generate)
 despre.html                      despre site, simbolistica culorilor
 politica-de-confidentialitate.html
 404.html
@@ -23,14 +23,14 @@ assets/img/      imagini
 assets/video/    video-ul din hero
 assets/fonts/    fonturi găzduite local
 assets/models/   modelul 3D al crucii (.glb)
-data/            program.json, parohii.json — datele care se actualizează
-scripts/         generatorul paginilor de parohii (Node)
+data/            program.json, parohii.json, institutii.json — datele care se actualizează
+scripts/         generatorul paginilor de parohii și instituții (Node)
 docs/            planul de design și notițe
 ```
 
 ## Actualizare conținut
 - Programul slujbelor: `data/program.json` (pagina îl citește singură, nu trebuie rulat nimic)
-- Parohiile: se modifică `data/parohii.json`, apoi se regenerează paginile:
+- Parohiile și instituțiile: se modifică `data/parohii.json` sau `data/institutii.json`, apoi se regenerează paginile:
 
 ```
 node scripts/genereaza.js
@@ -38,9 +38,12 @@ node scripts/genereaza.js
 
 Scriptul creează din șabloanele din `scripts/sabloane/`:
 - `parohii/index.html` (harta + lista) și câte o pagină `parohii/<slug>.html` pentru fiecare parohie;
+- `institutii/index.html` și câte o pagină `institutii/<slug>.html` pentru fiecare instituție;
 - `despre.html`, `politica-de-confidentialitate.html` și `404.html`, al căror conținut stă în `scripts/pagini/`.
 
 Aceste pagini nu se editează de mână: se modifică datele, șabloanele sau `scripts/pagini/` și se rulează din nou scriptul. Navbar-ul și footer-ul lor vin din `scripts/sabloane/_nav.html` și `_subsol.html`.
+
+Parohiile și instituțiile folosesc aceleași șabloane: `scripts/sabloane/colectie.html` (harta + lista) și `element.html` (pagina unui loc). Textele care diferă (titluri, etichetele din fișă, parametrul din adresă) stau în lista `COLECTII` din `scripts/genereaza.js`. Pentru o colecție nouă se adaugă un element în `COLECTII` și un fișier în `data/`.
 
 `404.html` folosește căi absolute (`/assets/...`), ca să funcționeze la orice adresă greșită. Merge corect pe domeniul propriu (pgcbeius.ro) sau pe serverul local.
 
@@ -60,8 +63,20 @@ Aceste pagini nu se editează de mână: se modifică datele, șabloanele sau `s
 | `galerie` | nu | de obicei nu e nevoie: galeria se face singură din folder (vezi mai jos) |
 | `test` | nu | `true` afișează nota „date de test” |
 
+### Câmpurile unei instituții (`data/institutii.json`)
+La fel ca la parohii (`slug`, `nume`, `localitate`, `coordonate` obligatorii; `adresa`, `rezumat`, `imagine`, `program`, `sectiuni`, `galerie`, `test` opționale), dar în loc de hram și preot fișa are:
+
+| Câmp | Apare în fișă ca | Exemplu |
+|---|---|---|
+| `tip` | Ce este | `Centru pentru copii și tineri al Parohiei Greco-Catolice Beiuș` |
+| `ocrotitor` | Ocrotitor | `Sfântul Filip Neri (26 mai)` |
+| `coordonator` | Coordonator | `prof. Carmen Zima` |
+| `asistentSpiritual` | Asistent spiritual | `pr. Zorel Zima, paroh și protopop de Beiuș` |
+
+`tip` apare și în listă și în fereastra de pe hartă. Pe harta mare, o instituție se deschide cu `institutii/?institutie=<slug>`.
+
 ### Galeria foto
-La finalul fiecărei pagini de parohie apare o galerie, dacă există poze în folderul ei:
+La finalul fiecărei pagini de parohie sau instituție apare o galerie, dacă există poze în folderul ei:
 
 ```
 assets/img/galerii/<slug>/     ex. assets/img/galerii/beius/

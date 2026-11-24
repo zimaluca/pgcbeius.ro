@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{titlu}}</title>
+  <title>{{titluLista}} | Protopopiatul Greco-Catolic Beiuș</title>
   <meta name="description" content="{{descriere}}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{titlu}}">
+  <meta property="og:title" content="{{titluOg}}">
   <meta property="og:description" content="{{descriere}}">
   <meta property="og:url" content="{{url}}">
-{{ogImagine}}
   <meta name="theme-color" content="#7A1E2C">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 
@@ -27,34 +26,27 @@
   <main id="continut">
     <div class="container">
       <header class="antet-pagina">
-        <p class="firimituri"><a href="./">Parohiile protopopiatului</a> / {{localitate}}</p>
-        <h1>{{nume}}</h1>
-{{notaTest}}
+        <p class="firimituri"><a href="../index.html">Acasă</a> / {{firimitura}}</p>
+        <h1>{{titluLista}}</h1>
+        <p class="intro">{{intro}}</p>
       </header>
 
-      <div class="parohie__sus">
-        <div class="parohie__imagine">{{imagine}}</div>
-        <dl class="fisa">{{fisa}}</dl>
-      </div>
-
-{{sectiuni}}
-      <section class="parohie__locatie" aria-labelledby="titlu-locatie">
-        <div>
-          <h2 id="titlu-locatie">Unde se află</h2>
-          <p>{{adresaText}}</p>
-          <a class="buton buton--plin" href="./?parohie={{slug}}">Vezi pe harta mare</a>
+      <div class="parohii">
+        <div id="harta-parohii" class="parohii__harta" role="region" aria-label="{{etichetaHarta}}"></div>
+        <div class="parohii__lista">
+          <p class="parohii__numar">{{numar}}</p>
+          <ul class="lista-parohii">
+{{lista}}
+          </ul>
         </div>
-        <div id="harta-parohie" class="parohie__harta" data-slug="{{slug}}" role="img" aria-label="Hartă cu locația bisericii din {{localitate}}"></div>
-      </section>
-
-{{galerie}}    </div>
+      </div>
+    </div>
   </main>
 
 {{subsol}}
-  <script type="application/json" id="date-parohii">{{date}}</script>
+  <script type="application/json" id="date-parohii" data-parametru="{{parametru}}" data-link="{{textLink}}">{{date}}</script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="../assets/js/pagina.js" defer></script>
   <script src="../assets/js/harta-parohii.js" defer></script>
-  <script src="../assets/js/galerie.js" defer></script>
 </body>
 </html>

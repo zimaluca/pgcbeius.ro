@@ -3,6 +3,8 @@
   if (!window.L || !sursa) return;
 
   const parohii = JSON.parse(sursa.textContent);
+  const parametru = sursa.dataset.parametru || 'parohie';
+  const textLink = sursa.dataset.link || 'Pagina parohiei';
 
   const esc = (text) =>
     String(text).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -34,8 +36,8 @@
       const pin = L.circleMarker(p.coordonate, stil).addTo(harta);
       pin.bindPopup(
         `<strong>${esc(p.nume)}</strong>` +
-        (p.hram ? `<br>Hram: ${esc(p.hram)}` : '') +
-        `<br><a href="${esc(p.slug)}.html">Pagina parohiei</a>`
+        (p.detaliu ? `<br>${esc(p.detaliu)}` : '') +
+        `<br><a href="${esc(p.slug)}.html">${esc(textLink)}</a>`
       );
       pin.on('popupopen', () => { deschisa = p.slug; evidentiaza(p.slug); });
       pin.on('popupclose', () => { deschisa = null; evidentiaza(null); });
@@ -55,7 +57,7 @@
       el.addEventListener('blur', iese);
     });
 
-    const ceruta = new URLSearchParams(window.location.search).get('parohie');
+    const ceruta = new URLSearchParams(window.location.search).get(parametru);
     const pin = ceruta && pini.get(ceruta);
     if (pin) {
       harta.setView(pin.getLatLng(), 13);
@@ -70,7 +72,7 @@
     if (p) {
       const harta = L.map(elMic, { scrollWheelZoom: false }).setView(p.coordonate, 13);
       straturi().addTo(harta);
-      L.circleMarker(p.coordonate, stilActiv).addTo(harta).bindTooltip(p.localitate);
+      L.circleMarker(p.coordonate, stilActiv).addTo(harta).bindTooltip(p.eticheta);
     }
   }
 })();

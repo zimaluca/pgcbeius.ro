@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "oratoriul-colt-de-rai",
+    "nume": "Oratoriul „Colț de Rai”",
+    "localitate": "Beiuș",
+    "tip": "Centru pentru copii și tineri al Parohiei Greco-Catolice Beiuș",
+    "ocrotitor": "Sfântul Filip Neri (26 mai)",
+    "coordonator": "prof. Carmen Zima",
+    "asistentSpiritual": "pr. Zorel Zima, paroh și protopop de Beiuș",
+    "adresa": "Calea Bihorului, 415200 Beiuș, jud. Bihor",
+    "coordonate": [
+      46.6653,
+      22.3582
+    ],
+    "rezumat": "Oratoriul „Colț de Rai” este centrul pentru copii și tineri al Parohiei Greco-Catolice Beiuș, cu activități săptămânale și tabere din 2015.",
+    "imagine": "",
+    "program": [
+      { "zi": "Vineri", "ora": "16:00–20:00", "slujba": "Întâlnirea oratoriului" }
+    ],
+    "sectiuni": [
+      {
+        "titlu": "Situația actuală",
+        "paragrafe": [
+          "Oratoriul „Colț de Rai” are o clădire proprie în complexul pastoral al bisericii greco-catolice „Sfinții Trei Ierarhi” din Beiuș. Activitățile sunt organizate de Asociația „Ave Miriam”, fondată de prof. Carmen Zima și pr. Zorel Zima, împreună cu parohia. Prof. Carmen Zima, profesoară de religie, coordonează oratoriul, iar pr. Zorel Zima, paroh și protopop de Beiuș, ține catehezele. Oratoriul are o curte, o sală de întâlniri și o capelă care poartă numele Fericitului episcop martir Ioan Suciu.",
+          "Întâlnirile au loc în fiecare vineri, de la ora 16:00 până seara. Vin în jur de zece copii și tineri, în două grupe de vârstă: 6–13 ani și 15–18 ani. Oratoriul este deschis oricărui copil: vin copii din familii greco-catolice și din alte comunități, iar fiecare este ajutat să-și cunoască și să-și păstreze propria identitate. Împreună pregătesc colinde, recitaluri și piesa tradițională „Viflaim” și participă la sărbătorile protopopiatului. Vara, anul se încheie cu o tabără.",
+          "Mulți dintre cei care au crescut în oratoriu sunt astăzi studenți în alte orașe și revin la întâlnirile de sărbători. Activitatea este susținută constant de parohie și, din când în când, de binefăcători. În vara lui 2026, copiii și tinerii oratoriului au făcut un pelerinaj de două zile la Blaj."
+        ]
+      },
+      {
+        "titlu": "Istoric",
+        "paragrafe": [
+          "Cuvântul „oratoriu” vine din latinescul oratorium și însemna la început un mic loc de rugăciune. În tradiția catolică, oratoriul pentru copii și tineri a pornit de la Sfântul Filip Neri, care a fondat la Roma, în 1575, Congregația Oratoriului. În secolul al XIX-lea, Sfântul Ioan Bosco l-a transformat la Torino într-un loc unde tinerii găseau joacă, cateheză, școală și o meserie.",
+          "Oratoriul „Colț de Rai” din Beiuș și-a început activitatea în 2015, ca program spiritual și educativ al Parohiei Greco-Catolice Beiuș, sub ocrotirea Sfântului Filip Neri. Tot atunci a avut loc și prima tabără de vară. De la început, oratoriul a fost coordonat de prof. Carmen Zima, cu sprijinul Asociației „Ave Miriam”.",
+          "În anii următori, copiii oratoriului au cântat la primirea relicvei Sfântului Anton de Padova, în 2018, și au colindat la concertele de Crăciun din biserică. Taberele de vară „Să mergem împreună” i-au dus la Lunca Vișagului, la Vârtop și la Săcuieu, cu drumeții, rugăciune și cateheză.",
+          "Pe 14 iunie 2025, oratoriul a sărbătorit 10 ani de activitate. În același an, copiii au prezentat biografiile celor șapte episcopi greco-catolici martiri, la comemorarea arestării lor, iar în 2026 au mers în pelerinaj la Blaj."
+        ]
+      },
+      {
+        "titlu": "Știați că?",
+        "paragrafe": [
+          "Ocrotitorul oratoriului este Sfântul Filip Neri, sărbătorit pe 26 mai, cel care a început oratoriul pentru copii și tineri.",
+          "În limba română veche, cuvântul „oratoriu” însemna o mică încăpere de rugăciune, un paraclis.",
+          "Capela din complexul oratoriului poartă numele Fericitului Ioan Suciu, care a fost episcop auxiliar de Oradea."
+        ]
+      }
+    ],
+    "galerie": [],
+    "test": false
+  }
+]

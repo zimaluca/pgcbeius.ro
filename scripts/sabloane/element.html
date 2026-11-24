@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parohiile protopopiatului | Protopopiatul Greco-Catolic Beiuș</title>
-  <meta name="description" content="Harta și lista parohiilor greco-catolice ale Protopopiatului Beiuș.">
+  <title>{{titlu}}</title>
+  <meta name="description" content="{{descriere}}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Parohiile Protopopiatului Greco-Catolic Beiuș">
-  <meta property="og:description" content="Harta și lista parohiilor greco-catolice ale Protopopiatului Beiuș.">
+  <meta property="og:title" content="{{titlu}}">
+  <meta property="og:description" content="{{descriere}}">
   <meta property="og:url" content="{{url}}">
+{{ogImagine}}
   <meta name="theme-color" content="#7A1E2C">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 
@@ -26,27 +27,34 @@
   <main id="continut">
     <div class="container">
       <header class="antet-pagina">
-        <p class="firimituri"><a href="../index.html">Acasă</a> / Parohii</p>
-        <h1>Parohiile protopopiatului</h1>
-        <p class="intro">Comunitățile greco-catolice ale Protopopiatului Beiuș. Alegeți o parohie de pe hartă sau din listă.</p>
+        <p class="firimituri"><a href="./">{{titluLista}}</a> / {{localitate}}</p>
+        <h1>{{nume}}</h1>
+{{notaTest}}
       </header>
 
-      <div class="parohii">
-        <div id="harta-parohii" class="parohii__harta" role="region" aria-label="Harta parohiilor"></div>
-        <div class="parohii__lista">
-          <p class="parohii__numar">{{numar}}</p>
-          <ul class="lista-parohii">
-{{lista}}
-          </ul>
-        </div>
+      <div class="parohie__sus">
+        <div class="parohie__imagine">{{imagine}}</div>
+        <dl class="fisa">{{fisa}}</dl>
       </div>
-    </div>
+
+{{sectiuni}}
+      <section class="parohie__locatie" aria-labelledby="titlu-locatie">
+        <div>
+          <h2 id="titlu-locatie">Unde se află</h2>
+          <p>{{adresaText}}</p>
+          <a class="buton buton--plin" href="./?{{parametru}}={{slug}}">Vezi pe harta mare</a>
+        </div>
+        <div id="harta-parohie" class="parohie__harta" data-slug="{{slug}}" role="img" aria-label="{{etichetaHartaMica}}"></div>
+      </section>
+
+{{galerie}}    </div>
   </main>
 
 {{subsol}}
-  <script type="application/json" id="date-parohii">{{date}}</script>
+  <script type="application/json" id="date-parohii" data-parametru="{{parametru}}" data-link="{{textLink}}">{{date}}</script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script src="../assets/js/pagina.js" defer></script>
   <script src="../assets/js/harta-parohii.js" defer></script>
+  <script src="../assets/js/galerie.js" defer></script>
 </body>
 </html>
